@@ -1,29 +1,68 @@
-= PHP
+# docker  : 
+---
+__Advertisement :)__
 
-*PHP* is a backend programming language which allow for dynamic pages, follow
-this link:./introduction.adoc[introduction] for more information.
+- __[ Tuto openclassroom ](https://openclassrooms.com/fr/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker/6211458-lancez-votre-premier-conteneur-en-local)__ - tuto open class room
+ 
+- __[ Installer docker ](https://planete-warez.net/topic/71/docker-installer-docker-et-apprendre-les-bases-debian)__ - developer friendly
+ - __[ Excellent Tuto ]( https://dyma.fr/developer/chapters/core/5f9b1b3ab9e74d2ec5cf716f/lesson/docker/5f9b1b4cb9e74d2ec5cf7170/3/1)__ - POUR COMPRENDRE DOCKERFILE ET COMPAGNIE 
+ - 
+  - __[ le docker préfait de mike <3 ]( https://github.com/becodeorg/BXL-Swartz-5.34/tree/main/2.The-Hill/1.PHP/docker_env)__ - utiliser docker compose 
 
-This learning track is made in BeCode.
-Feel free to go to OpenClassroom, Codecademy, Sololoearn... As long as you meet the following learning objectives.
+---
+ ## creer un docker de zero 
 
+1. Se rendre dans le bon dossier 
+2.  faire `docker run -d -p 8080:80 nginx`  ( !! exemple , ici nginx sera le coté serveur a la place de appache)
+3. recuperer l'id d'un docker avec` docker ps`
 
-== Challenges
-
-* link:./variables.md[00 - variables]
-* link:./conditions.md[01 - conditions]
-* link:./quizz.md[02 - quizz]
-* link:./array.md[03 - arrays]
-* link:./loop.md[04 - loops]
-* link:./functions.md[05 - functions]
-* link:./form.md[06 - How to manage a form correctly in PHP]
-
-== Project
+4. rentrer dedans apres :   `  winpty docker exec -ti 3396eedc54f2 bash ` (  !! ici la serie de numéro est l'id récupérée par le docker ps )
+5. le fichier html sera par exemple dans  `cd /usr/share/nginx/html`
 
 
+---
+  telecharger remote container sur visual studio  + container 
+   cliquer en bas sur la case verte et faire " attach to running container "..
+---
 
-== Resources
+   
+  ## creer une nouvelle image 
+   ---
+__Advertisement :)__
 
-* https://www.php.net/manual/en/[manual]
-* http://phptester.net/[PHPTester]
+ - __[ Dyma  ]( https://dyma.fr/developer/chapters/core/5f9b1b3ab9e74d2ec5cf716f/lesson/docker/5f9b1b4cb9e74d2ec5cf7170/3/1)__ -  en ce basant sur ce lien , la suite 
 
-image::https://media.giphy.com/media/g4jDE1JnpUNaw/giphy.gif[]
+
+---
+ 1. creer un nouveau dossier , exemple mkdir docker-test
+2.   dedans creer un fichier Dockerfile  , via visualstudio
+3.  apres par exemple  , creer un fichier app.js et faire un console.log("test")
+
+        // Some comments
+         FROM alpine
+
+        RUN apk add --update nodejs
+
+        COPY ./app.js /app/
+
+        CMD [ "node", "/app/app.js" ]
+   
+4. ouvrir le terminal en etant dans le dossier et faire  ` docker image build . `
+5. on peut tager l'image en faisant :  `  docker build -t node:latest .   ` 
+    1. build pour creer limage 
+     2. -t permet d'ajouter un "flag" ------> comprendre un nom 
+     3. node cest le nom qu'on lui  a donné
+     4.  les " : " sont la pour designer le tag , la "version"
+ 
+6. on peut aussi voir la liste des images que l'ont a en faisant  ` docker image ls   `
+7. on peut lancer celui que l'on veut en faisant docker run " nom du docker "
+
+---
+__Advertisement :)__
+
+ - __[ Lien becode dockerfile préfait   ]( https://github.com/becodeorg/BXL-Swartz-5.34/tree/main/2.The-Hill/1.PHP/docker_env)__ -  ici le dockerfile est préfait , il faut simplement l'installer en utilisant ` docker-compose up -d  `
+http://localhost:80.
+
+---
+---
+
